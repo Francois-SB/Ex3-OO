@@ -31,6 +31,8 @@ public class PLMV1 {
 		
 		public static void main(String[] args) {
 		/*---------VARIABLES------------*/
+		int userChoice=0;
+		
 		HashMap<Integer,List<String>> planes = new HashMap<>();// id; program0, type1, actual phase2, List?<pieces>3, ... 
 		
 		Scanner scan = new Scanner(System.in);
@@ -76,16 +78,68 @@ public class PLMV1 {
 		planes.get(2).add(ACActualPhase[5]);//in service
 		///////////end init///////////
 		
-		System.out.println(planes);
+		//System.out.println(planes);
 		
+		//System.out.println(userChoice);
+//		planes.forEach(
+//				(key,value)
+//				-> System.out.println(key + " = " + value));//FONCTIONNE
+		while(userChoice!=5) {
+			System.out.println();
+			System.out.println();
+			userChoice = displayMenuAndGetChoice(scan);
+			switch (userChoice) {
+			case 1 : displayAllPlanes(planes);
+				break;
+			case 2 : System.out.println("----case2----");
+				break;
+			case 3 : System.out.println("----case3----");
+				break;
+			case 4 : System.out.println("----case4----");
+				break;
+			case 5 : System.out.println("----case5----");
+				break;
+			}
+		}
+		scan.close();
+		}
 		
-
-	}
-//		public static int displayMenuAndGetChoice() {
-//			int choice=0;
-//			System.out.println("1 : Display all planes. \n2 : Display all planes for certain key word\n 3 : Add or suppr one piece on a plane");
-//			System.out.println("4 : Display one plane with his pieces details\n5 : Quit the application");
+		/*---displayMenuAndGetChoice---*/
+		public static int displayMenuAndGetChoice(Scanner sc) {
+			int choice=0;
+			System.out.println("Welcome in PLM Airbus");
+			System.out.println("1 : Display all planes. \n2 : Display all planes for certain key word\n 3 : Add or suppr one piece on a plane");
+			System.out.println("4 : Display one plane with his pieces details\n5 : Quit the application");
+			//do{
+				choice=sc.nextInt();
+				
+			//}while(sc.hasNextInt()==false);
+			return choice;
+		}
+		
+		/*---display all items from an HashMap---*/
+		/*---"https://www.geeksforgeeks.org/how-to-iterate-hashmap-in-java/" for lot of way to display an HashMap---*/
+		public static void displayAllPlanes(HashMap<Integer,List<String>> map) {// OUIIIIIIIIIIIIIIIIIIIIIIII
+			map.forEach(
+					(key,value)
+					-> System.out.println(key + " = " + value));
+		}
+		/*---display all items from an HashMap---*/
+		/*--- 2nd display way---*/
+//		public static void displayAllPlanes(HashMap<Integer,List<String>> map) {// OK
+//			for (HashMap.Entry<Integer, List<String>> set : 
+//				 map.entrySet()) {
+//				System.out.println(set.getKey() + " = " + set.getValue());
+//			}
 //		}
+		
+		///////////2///////////
+		/*---search In ACProgram---*/
+		public static void SearchAC(HashMap<Integer,List<String>> map, Scanner sc) {// IN PROGRESS
+
+		}
+		///////////2///////////
+		
 		///////////5///////////
 		//La methode 'void' prend en 'args' un id d'avion
 		
